@@ -4,7 +4,9 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 //让指定几个线程执行完成之后再集中做，某件事
-//处理成功之后的操作
+/*
+不对，不是这样子的
+*/
 public class CyclicBarriesDemo {
     private static final int number=7;
     public static void main(String[] args) {
