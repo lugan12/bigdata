@@ -4,7 +4,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 //先设置几个线程执行完之后，在执行cyclicbarrier线程
-// 个儿
+import java.io.Serializable;
 public class CyclicBarrierDemo {
     private static final int number=9;
     public static void main(String[] args) {
