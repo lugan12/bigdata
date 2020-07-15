@@ -7,6 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
 傻逼吧你，草
  */
+//好吃
 class ShareResource {
     private int number = 1;
     private ReentrantLock lock = new ReentrantLock();
@@ -18,19 +19,15 @@ class ShareResource {
         try {
             lock.lock();
             //判断
-            while (number != 1) {
+            while(number!=1){
                 condition1.await();
             }
             //执行逻辑
-            for (int i = 0; i < 5; i++) {
-                System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
-                //vdsfe
-                //njnrje
-                //ndgbhgfh&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                //System.out.println
-                //djff
+            for (int i = 0; i <5 ; i++) {
+                System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
+				//System.out.println
             }
-            number = 2;
+            number=2;
             //通知其他线程
             condition2.signal();
         } catch (InterruptedException e) {
@@ -39,19 +36,18 @@ class ShareResource {
             lock.unlock();
         }
     }
-
-    public void print10(int loop) {
+    public void print10(int loop){
         try {
             lock.lock();
             //判断
-            while (number != 2) {
+            while (number!=2){
                 condition2.await();
             }
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i <10 ; i++) {
                 //执行逻辑
-                System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
+                System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
             }
-            number = 3;
+            number=3;
             //通知其他线程
             condition3.signal();
         } catch (Exception e) {
@@ -60,8 +56,7 @@ class ShareResource {
             lock.unlock();
         }
     }
-
-    public void print15(int loop) {
+    public void print15(int loop){
         try {
             lock.lock();
             //判断
@@ -106,6 +101,6 @@ public class ThreadOrderAccessDemo {
                     shareResource.print15(i);
                 }
             }
-        }, "C").start();
+        },"C").start();
     }
 }
