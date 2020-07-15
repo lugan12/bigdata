@@ -29,6 +29,7 @@ class ShareResource {
                 //ndgbhgfh&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
                 //System.out.println
                 //djff
+                //222222222222222222222222222222222222222222
             }
             number = 2;
             //通知其他线程
