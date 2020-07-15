@@ -20,6 +20,7 @@ class ShareResource{
             //执行逻辑
             for (int i = 0; i <5 ; i++) {
                 System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
+				//System.out.println
             }
             number=2;
             //通知其他线程
