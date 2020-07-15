@@ -4,6 +4,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 //按顺序执行线程
+/**
+傻逼吧你，草
+ */
 class ShareResource {
     private int number = 1;
     private ReentrantLock lock = new ReentrantLock();
