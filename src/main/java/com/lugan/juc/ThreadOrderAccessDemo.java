@@ -24,6 +24,7 @@ class ShareResource {
                 //vdsfe
                 //njnrje
                 //nd
+                //System.out.println
             }
             number = 2;
             //通知其他线程
@@ -60,15 +61,15 @@ class ShareResource {
         try {
             lock.lock();
             //判断
-            while (number != 3) {
+            while (number!=3){
                 condition3.await();
             }
             //执行逻辑
             for (int i = 0; i < 15; i++) {
-                System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
+                System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
             }
             //通知其他线程
-            number = 1;
+            number=1;
             condition1.signal();
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,21 +84,21 @@ public class ThreadOrderAccessDemo {
         final ShareResource shareResource = new ShareResource();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i <5 ; i++) {
                     shareResource.print5(i);
                 }
             }
-        }, "A").start();
+        },"A").start();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i <5 ; i++) {
                     shareResource.print10(i);
                 }
             }
-        }, "B").start();
+        },"B").start();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i <5 ; i++) {
                     shareResource.print15(i);
                 }
             }
