@@ -30,6 +30,7 @@ class ShareResource {
                 //System.out.println
                 //djff
                 //222222222222222222222222222222222222222222
+                //tttttttttttttttttttttttttttttttttttttttttttttttttttt
             }
             number = 2;
             //通知其他线程
