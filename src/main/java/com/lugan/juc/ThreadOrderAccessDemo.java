@@ -4,24 +4,28 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 //按顺序执行线程
-class ShareResource{
-    private int number=1;
+class ShareResource {
+    private int number = 1;
     private ReentrantLock lock = new ReentrantLock();
-    private Condition condition1=lock.newCondition();
-    private Condition condition2=lock.newCondition();
-    private Condition condition3=lock.newCondition();
-    public void print5(int loop){
+    private Condition condition1 = lock.newCondition();
+    private Condition condition2 = lock.newCondition();
+    private Condition condition3 = lock.newCondition();
+
+    public void print5(int loop) {
         try {
             lock.lock();
             //判断
-            while(number!=1){
+            while (number != 1) {
                 condition1.await();
             }
             //执行逻辑
-            for (int i = 0; i <5 ; i++) {
-                System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
+            for (int i = 0; i < 5; i++) {
+                System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
+                //vdsfe
+                //njnrje
+                //nd
             }
-            number=2;
+            number = 2;
             //通知其他线程
             condition2.signal();
         } catch (InterruptedException e) {
@@ -30,18 +34,19 @@ class ShareResource{
             lock.unlock();
         }
     }
-    public void print10(int loop){
+
+    public void print10(int loop) {
         try {
             lock.lock();
             //判断
-            while (number!=2){
+            while (number != 2) {
                 condition2.await();
             }
-            for (int i = 0; i <10 ; i++) {
+            for (int i = 0; i < 10; i++) {
                 //执行逻辑
-                System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
+                System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
             }
-            number=3;
+            number = 3;
             //通知其他线程
             condition3.signal();
         } catch (Exception e) {
@@ -50,19 +55,20 @@ class ShareResource{
             lock.unlock();
         }
     }
-    public void print15(int loop){
+
+    public void print15(int loop) {
         try {
             lock.lock();
             //判断
-            while (number!=3){
+            while (number != 3) {
                 condition3.await();
             }
             //执行逻辑
             for (int i = 0; i < 15; i++) {
-                System.out.println(Thread.currentThread().getName()+"\t"+"loop:"+loop+"\tprint:"+i);
+                System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
             }
             //通知其他线程
-            number=1;
+            number = 1;
             condition1.signal();
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,24 +83,24 @@ public class ThreadOrderAccessDemo {
         final ShareResource shareResource = new ShareResource();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i <5 ; i++) {
+                for (int i = 0; i < 5; i++) {
                     shareResource.print5(i);
                 }
             }
-        },"A").start();
+        }, "A").start();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i <5 ; i++) {
+                for (int i = 0; i < 5; i++) {
                     shareResource.print10(i);
                 }
             }
-        },"B").start();
+        }, "B").start();
         new Thread(new Runnable() {
             public void run() {
-                for (int i = 0; i <5 ; i++) {
+                for (int i = 0; i < 5; i++) {
                     shareResource.print15(i);
                 }
             }
-        },"C").start();
+        }, "C").start();
     }
 }
