@@ -28,6 +28,7 @@ class ShareResource {
                 //njnrje
                 //nd
                 //System.out.println
+                //djff
             }
             number = 2;
             //通知其他线程
