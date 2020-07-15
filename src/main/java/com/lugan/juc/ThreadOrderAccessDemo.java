@@ -26,7 +26,7 @@ class ShareResource {
                 System.out.println(Thread.currentThread().getName() + "\t" + "loop:" + loop + "\tprint:" + i);
                 //vdsfe
                 //njnrje
-                //nd
+                //ndgbhgfh&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
                 //System.out.println
                 //djff
             }
